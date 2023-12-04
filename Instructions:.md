@@ -1,0 +1,8 @@
+Instructions:
+1. Use python scrape_urls.py or python3 scrape_urls.py to run the code.
+2. Due to the website's anti-scraping techniques, please only run two makes each time. That is to say, only include two elements in "makes" list in the "__main__". Be careful, do not repeat!!!
+3. After getting the code, you can leave only "AC" in makes list to test if this code runs well on your computer. After running, there should be a new folder in your directory with a csv called "urls.csv" inside. If you tested the code by running "AC", it should print out "32" in the termminal, and remember to DELETE the csv file before you start your formal scraping!
+4. I have modified the csv writer into "a" mode, that is to say, the only thing you need to modify each time after you finish running two makes is the elments of makes list. You don't have to change anything else and the csv writer will continue to write on the base of original csv and won't overwrite anything.
+5. If you encounter any error please tell me. 
+6. I left the print(len()) in the code, so that you can see how many urls are found each time. The website seems to have anti-scraping technique to block over 10000 requests so from my experience it shouldn't exceed 10000. However, it's only my hypothesis so if it is over 10000 it doesn't matter. If from your experience some makes are popular but you only get like 12 results, that might be a bad sign.
+7. Some popular makes like Toyota, Honda may have extremely large number of results. So I won't be surprised if you encounter error on these two brands. Try to run them alone to avoid blocking. 
