@@ -8,8 +8,8 @@ import statsmodels.formula.api as smf
 conn = sqlite3.connect('finalproject.db') 
 
 # Define a list of selected brands
-selected_brands = ["brand1", "brand2", "brand3", "brand4", "brand5",
-                    "brand6", "brand7", "brand8", "brand9", "brand10"]
+selected_brands = ["Audi", "Toyota", "Volkswagen", "Jeep", "Honda",
+                    "Mazda", "RAM", "Buick", "Lexus", "GMC"]
 
 # Create an empty DataFrame to store results
 results_df = pd.DataFrame(columns=["Make", "Mileage Coefficient", "Intercept", "R-squared"])
