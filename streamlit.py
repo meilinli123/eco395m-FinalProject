@@ -6,6 +6,8 @@ import folium
 from folium.plugins import MarkerCluster
 from streamlit_folium import folium_static
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Set OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -30,6 +32,25 @@ finally:
     # Close the database connection in a 'finally' block to ensure it's always closed
     if conn:
         conn.close()
+
+# begin page
+st.set_page_config(
+    page_title="Masha's Car Finder",
+    page_icon=":racing_car:",
+    layout="wide",
+)
+
+st.sidebar.header("Search Options")
+car_make = st.sidebar.text_input("Enter Car Make:")
+car_model = st.sidebar.text_input("Enter Car Model:")
+search_button = st.sidebar.button("Search")
+
+# populating cars.com logo
+st.title("Find Your Dream Car")
+st.image('https://s3.amazonaws.com/fzautomotive/dealers/56998b9186be8.png')
+st.image('https://www.cars.com/images/cars_logo_primary@2x-369317d81682f33d21c8fbdc7959f837.png?vsn=d',
+         caption='Data provided by Cars.com')
+
 
 # Streamlit app
 st.title("Interactive Chatbot with PostgreSQL Data")
@@ -66,7 +87,9 @@ for state, state_df in df.groupby('stabr'):
 # Display the Folium map in Streamlit using folium_static
 folium_static(m)
 
-
+st.subheader('Bar Chart: Population in LSA by State')
+bar_chart_data = df[['stabr', 'popu_lsa']]
+st.bar_chart(bar_chart_data.set_index('stabr'))
 
 
 
