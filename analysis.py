@@ -30,3 +30,22 @@ def top_10_brands():
 brands = top_10_brands()
 print(brands)
 
+
+def top_5_expensive_brand():
+    try:
+        connection = connect_to_database()
+        if connection:
+            cursor = connection.cursor()
+            query = "select make, avg (price) avg_price from car_basic group by make order by avg_price desc limit 5"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            return rows
+        return None
+    except Exception as e:
+        print(e)
+        return None
+
+expensive = top_5_expensive_brand()
+print(expensive)
