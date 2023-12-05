@@ -77,3 +77,44 @@ top5 = top_10_brands()
 print(top5)
 print()
 
+def make_state():
+    try:
+        connection = connect_to_database()
+        if connection:
+            cursor = connection.cursor()
+            query = "select make,  state, COUNT(*) AS total_cars FROM (SELECT * FROM seller_final JOIN car_basic ON seller_final.vin = car_basic.vin) as makestate GROUP BY make, state ORDER BY make, state"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            df = pd.DataFrame(rows, columns=["make", "state",'total_cars'])
+            #df["make"] = df["state"].astype(float, errors="ignore")
+            return df
+        return None
+    except Exception as e:
+        print(e)
+        return None
+makestate = make_state()
+print(makestate)
+print()
+
+def model_state():
+    try:
+        connection = connect_to_database()
+        if connection:
+            cursor = connection.cursor()
+            query = "select model,  state, COUNT(*) AS total_cars FROM (SELECT * FROM seller_final JOIN car_basic ON seller_final.vin = car_basic.vin) as modelstate GROUP BY model, state ORDER BY model, state"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            df = pd.DataFrame(rows, columns=["model", "state",'total_cars'])
+            #df["make"] = df["state"].astype(float, errors="ignore")
+            return df
+        return None
+    except Exception as e:
+        print(e)
+        return None
+modelstate = model_state()
+print(modelstate)
+print()
