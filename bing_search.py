@@ -1,7 +1,11 @@
 import requests
 import json
+from dotenv import load_dotenv
+import os
 
-api_key = 'YOUR_API_KEY'
+load_dotenv('bing.env')
+
+api_key = os.getenv('BING_API_KEY')
 
 search_query = 'OpenAI'
 
