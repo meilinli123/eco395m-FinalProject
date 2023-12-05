@@ -30,7 +30,9 @@ def top_10_brands():
         except Exception as e:
                 print(e)
                 return None
-
+top10 = top_10_brands()
+print(top_10_brands())
+print()
 
 def top_5_expensive_brand():
     try:
@@ -49,7 +51,9 @@ def top_5_expensive_brand():
     except Exception as e:
         print(e)
         return None
-
+top5 = top_5_expensive_brand()
+print(top5)
+print()
 
 def top_5_cheapest_brand():
     try:
@@ -69,5 +73,7 @@ def top_5_cheapest_brand():
         print(e)
         return None
 
-
+top5 = top_10_brands()
+print(top5)
+print()
 
