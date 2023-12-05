@@ -24,13 +24,12 @@ def top_10_brands():
                         cursor.close()
                         connection.close()
                         df = pd.DataFrame(rows, columns=["brand", "total"])
+                        df["total"] = df["total"].astype(int, errors="ignore")
                         return df
                 return None
         except Exception as e:
                 print(e)
                 return None
-brands = top_10_brands()
-print(brands)
 
 
 def top_5_expensive_brand():
@@ -51,8 +50,6 @@ def top_5_expensive_brand():
         print(e)
         return None
 
-expensive = top_5_expensive_brand()
-print(expensive.info())
 
 def top_5_cheapest_brand():
     try:
@@ -65,12 +62,12 @@ def top_5_cheapest_brand():
             cursor.close()
             connection.close()
             df = pd.DataFrame(rows, columns=["brand", "avg_price"])
+            df["avg_price"] = df["avg_price"].astype(float, errors="ignore")
             return df
         return None
     except Exception as e:
         print(e)
         return None
 
-cheap = top_5_cheapest_brand()
-print(cheap)
+
 
