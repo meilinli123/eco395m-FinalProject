@@ -93,3 +93,6 @@ st.bar_chart(bar_chart_data.set_index('stabr'))
 
 
 from analysis import top_5_expensive_brand
+
+top_5_expensive_brand_dataset = top_5_expensive_brand()
+st.bar_chart(top_5_expensive_brand_dataset, x = "brand", y = "avg_price" )

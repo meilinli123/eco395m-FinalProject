@@ -44,6 +44,7 @@ def top_5_expensive_brand():
             cursor.close()
             connection.close()
             df = pd.DataFrame(rows, columns = ["brand","avg_price"])
+            df["avg_price"] = df["avg_price"].astype(float, errors = "ignore")
             return df
         return None
     except Exception as e:
@@ -51,7 +52,7 @@ def top_5_expensive_brand():
         return None
 
 expensive = top_5_expensive_brand()
-print(expensive)
+print(expensive.info())
 
 def top_5_cheapest_brand():
     try:
