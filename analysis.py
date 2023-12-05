@@ -1,5 +1,6 @@
+import pandas as pd
 import psycopg2
-
+import pandas as pd
 
 # Connect to your PostgreSQL database
 def connect_to_database():
@@ -22,7 +23,8 @@ def top_10_brands():
                         rows = cursor.fetchall()
                         cursor.close()
                         connection.close()
-                        return rows
+                        df = pd.DataFrame(rows, columns=["brand", "total"])
+                        return df
                 return None
         except Exception as e:
                 print(e)
@@ -41,7 +43,8 @@ def top_5_expensive_brand():
             rows = cursor.fetchall()
             cursor.close()
             connection.close()
-            return rows
+            df = pd.DataFrame(rows, columns = ["brand","avg_price"])
+            return df
         return None
     except Exception as e:
         print(e)
@@ -60,7 +63,8 @@ def top_5_cheapest_brand():
             rows = cursor.fetchall()
             cursor.close()
             connection.close()
-            return rows
+            df = pd.DataFrame(rows, columns=["brand", "avg_price"])
+            return df
         return None
     except Exception as e:
         print(e)
@@ -68,3 +72,4 @@ def top_5_cheapest_brand():
 
 cheap = top_5_cheapest_brand()
 print(cheap)
+
