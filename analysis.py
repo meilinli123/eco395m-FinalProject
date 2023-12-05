@@ -49,3 +49,22 @@ def top_5_expensive_brand():
 
 expensive = top_5_expensive_brand()
 print(expensive)
+
+def top_5_cheapest_brand():
+    try:
+        connection = connect_to_database()
+        if connection:
+            cursor = connection.cursor()
+            query = "select * from (select make, avg (price) avg_price from car_basic group by make order by avg_price) as T where avg_price > 0 limit 5;"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            return rows
+        return None
+    except Exception as e:
+        print(e)
+        return None
+
+cheap = top_5_cheapest_brand()
+print(cheap)
