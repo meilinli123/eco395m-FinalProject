@@ -34,6 +34,30 @@ top10 = top_10_brands()
 print(top_10_brands())
 print()
 
+
+def Mileage_price():
+    try:
+        connection = connect_to_database()
+        if connection:
+            cursor = connection.cursor()
+            query = "select * from car_basic"
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            df = pd.DataFrame(rows, columns=["vin", "make", "produced_year", "model","mileage","new_used","price",])
+            #df["total"] = df["total"].astype(int, errors="ignore")
+            return df
+        return None
+    except Exception as e:
+        print(e)
+        return None
+
+
+top10 = top_10_brands()
+print(top_10_brands())
+print()
+
 def top_5_expensive_brand():
     try:
         connection = connect_to_database()
