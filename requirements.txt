@@ -1,0 +1,17 @@
+requests
+BeautifulSoup4
+re 
+backoff
+streamlit
+pandas
+statsmodels
+psycopg2
+numpy
+matplotlib
+folium
+seaborn
+sqlite3
+streamlit_extras
+scipy
+altair
+

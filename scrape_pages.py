@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
-import csv
+import random 
 import re
-
+import backoff
 
 def extract_car_make(soup):
     try:
@@ -114,45 +114,54 @@ def extract_price(soup):
         print(f"Error extracting car price: {e}")
         return None
 
-def extract_car_info_table(soup):
-    try:
-        
-        table_tag = soup.find('dl', class_='fancy-description-list')
-        car_info = {}
-
-        dt_tags = table_tag.find_all('dt')
-        dd_tags = table_tag.find_all('dd')
-
-        for dt, dd in zip(dt_tags, dd_tags):
-            
-            key = dt.text.strip()
-            value = dd.text.strip()
-            if key == 'Exterior color' or 'Interior color' or 'Drivetrain' or 'Fuel type' or 'Transmission' or 'Engine':
-                if value == None:
-                    value = None
-            if key == 'MPG':
-                try:
-                    mpg_num = value.split('\n')[0].strip()
-                    value = re.sub(r'[^0-9]', ',', mpg_num)
-                    value = int(value)
-                except ValueError:
-                    value = None
-            if key == 'Mileage':
-                
-                value_num = value.rstrip(' mi.')
-                if value_num == None:
-                    value = None
-                value = value_num.replace(',', '')
-            
-            car_info[key] = value
-            
-        return car_info
+def extract_car_info_table(url, soup):
     
-    except Exception as e:
-        print(f"Error extracting car info table: {e}")
-        return None
+    try:
+        table_tag = soup.find('dl', class_='fancy-description-list')
+        car_info = {
+            "Exterior color": '',
+            "Interior color": '',
+            "Drivetrain": '',
+            "MPG": '',
+            "Fuel type": '',
+            "Transmission": '',
+            "Engine": '',
+            "VIN": '',
+            "Stock #": '',
+            "Mileage": ''
+        }
+  
+        if table_tag:
+            dt_tags = table_tag.find_all('dt')
+            dd_tags = table_tag.find_all('dd')
 
-def extract_seller_info(soup):
+            for dt, dd in zip(dt_tags, dd_tags):
+                key = dt.text.strip()
+                value = dd.text.strip()
+
+                if key in car_info:
+                    if key == 'MPG':
+                        try:
+                            mpg_num = value.split('\n')[0].strip()
+                            value = re.sub(r'[^0-9]', ',', mpg_num)
+                            value = int(value)
+                        except ValueError:
+                            value = None
+                    elif key == 'Mileage':
+                        value_num = value.rstrip(' mi.')
+                        if value_num == None:
+                            value = None
+                        else:
+                            value = value_num.replace(',', '')
+
+                    car_info[key] = value
+
+        return car_info
+    except Exception as e:
+        print(f"Error extracting car info table for {url}: {e}")
+        return car_info
+
+def extract_seller_info(url,soup):
     
     try:
         
@@ -168,8 +177,8 @@ def extract_seller_info(soup):
         title_tag2 = soup.find('div', class_='dealer-address')
         title2 = title_tag2.text.strip() if title_tag2 else None
 
-        state = None  # Initialize state to None
-        zip_code = None  # Initialize zip_code to None
+        state = None  
+        zip_code = None  
 
         if title2 != None:
             parts = title2.split(', ')
@@ -178,7 +187,7 @@ def extract_seller_info(soup):
                 state = state_zip[:2]  
                 zip_code = state_zip[-5:]  
 
-        car_info = extract_car_info_table(soup)
+        car_info = extract_car_info_table(url, soup)
         vin = car_info.get("VIN") if car_info is not None else None
 
     except Exception as e:
@@ -189,6 +198,7 @@ def extract_seller_info(soup):
 
 def scrape_car(url):
     try:
+        # proxy = get_proxy()
         soup = get_soup(url)
         if soup is None:
             return None
@@ -199,10 +209,11 @@ def scrape_car(url):
         mileage = extract_mileage(soup)
         condition = new_used(soup)
         price = extract_price(soup)
-        car_more_info = extract_car_info_table(soup)
-        seller = extract_seller_info(soup)
+        car_more_info = extract_car_info_table(url,soup)
+        seller = extract_seller_info(url, soup)
         car_basic ={"VIN":car_more_info.get("VIN") if car_more_info is not None else None, "Make":make, "Produce Year":year, "Model":model, "Mileage":mileage, "New/Used":condition, "Price":price}
         return car_basic, car_more_info, seller
+    
     except Exception as e:
         print(f"Error scraping car data: {e}")
         return None
@@ -211,7 +222,7 @@ def scrape_(urls):
     basic_data = []
     more_info = []
     seller_info = []
-    # url_list = []
+    
 
     for url in urls:
         car_info, car_more_info, seller = scrape_car(url)
@@ -220,15 +231,28 @@ def scrape_(urls):
             basic_data.append(car_info)
             more_info.append(car_more_info)
             seller_info.append(seller)
-            # url_list.append(url)
+            
         if not car_info:
             break
 
     return basic_data, more_info, seller_info
 
+def _backoff_hdlr(details):
+    print(f"Backing off {details['wait']} seconds after {details['tries']} tries due to exception: {details['exception']}")
+
+@backoff.on_exception(
+    backoff.expo,
+    (
+        requests.exceptions.RequestException,
+        Exception,
+    ),
+    on_backoff=_backoff_hdlr,
+)
+
 def get_soup(url):
     try:
         r = requests.get(url)
+        # print(r.status_code)
         r.raise_for_status()
 
         soup = BeautifulSoup(r.text, 'html.parser')
@@ -240,6 +264,11 @@ def get_soup(url):
     except Exception as e:
         print(f"Error getting soup: {e}")
         return None
+    
+# def get_proxy():
+    
+#     proxies = []
+#     return random.choice(proxies)
 
 if __name__ == "__main__": 
 
