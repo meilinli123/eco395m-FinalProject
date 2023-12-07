@@ -7,10 +7,10 @@ import joblib
 
 
 # Load the Decision Tree model and label encoders
-decision_tree = joblib.load('decision_tree_model.joblib')
-label_encoders = joblib.load('label_encoders.joblib')
+decision_tree = joblib.load('interactive_estimation_model/decision_tree_model.joblib')
+label_encoders = joblib.load('interactive_estimation_model/label_encoders.joblib')
 # Load the one-hot encoder (based on training data)
-one_hot_encoder = joblib.load('one_hot_encoder.joblib')
+one_hot_encoder = joblib.load('interactive_estimation_model/one_hot_encoder.joblib')
 
 # Function to encode categorical variables for prediction
 def encode_input_data(make, model, produce_year, mileage, zip_code):

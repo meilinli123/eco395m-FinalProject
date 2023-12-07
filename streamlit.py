@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 from analysis import top_10_brands, top_5_expensive_brand, top_5_cheapest_brand, make_state, model_state, \
     connect_to_database, Mileage_price
-
+from interactive_estimation_model import regressionmap
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Set page configuration
@@ -33,7 +33,7 @@ st.set_page_config(
 )
 
 # populating cars.com logo
-st.title("Search what you would like to know about your dream car!")
+st.title("Search About Your Dream Car!")
 st.image('https://s3.amazonaws.com/fzautomotive/dealers/56998b9186be8.png')
 st.image('https://www.cars.com/images/cars_logo_primary@2x-369317d81682f33d21c8fbdc7959f837.png?vsn=d',
          caption=' *All data provided by Cars.com - for educational purposes only*')
@@ -126,7 +126,7 @@ finally:
     if conn:
         conn.close()
 
-app_menu = ['Chatbot Suggestions', 'Interactive Data', 'Analysis Dashboard']
+app_menu = ['Chatbot Suggestions', 'Interactive Data', 'Analysis Dashboard', 'Price Prediction']
 
 with st.sidebar:
     app_menu_options = option_menu(
@@ -270,4 +270,6 @@ if app_menu_options == 'Analysis Dashboard':
     # st.pyplot(fig)
 
 
-
+#price pred
+if app_menu_options == 'Price Prediction':
+    regressionmap.main()
