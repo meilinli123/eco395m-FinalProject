@@ -71,9 +71,9 @@ Our comprehensive findings and results are derived from an in-depth analysis of 
 - **Interactive Web Interface**: We utilize Streamlit to generate a web application that provides:
 
   - **Rankings**:
-    - Top 5 most popular brands
-    - Top 5 most expensive brands
-    - Top 5 cheapest brands
+    - Top 10 most popular brands: Audi, Toyota, Volkswagen, Jeep, Honda, Mazda, RAM, Buick, Lexus, GMC
+    - Top 5 most expensive brands: DeTomaso, Ferrari, Lamborghini, McLaren, Spyker
+    - Top 5 cheapest brands: Geo, Mercury, Saturn, Suzuki, smart
 
   These rankings help customers gain a general understanding of the market.
 
@@ -84,8 +84,6 @@ Our comprehensive findings and results are derived from an in-depth analysis of 
 
 Our analysis could be enriched further by considering the following aspects:
 
-- **Environmental Impact Assessment**: Analyzing factors like fuel efficiency and emissions data to provide insights into the ecological footprint of popular vehicles.
-  
 - **Competitor Analysis**: Extending the analysis to include data from competing platforms to compare pricing, popularity, and features.
 
 - **Seasonal Trends**: Investigating potential seasonal trends in car pricing or demand, and offering recommendations for optimal buying times.
@@ -105,25 +103,25 @@ Our analysis could be enriched further by considering the following aspects:
    pip install -r requirements.txt
 
 2. **Data Acquisition**:
-- Run `scrape_urls.py` to extract all URLs into a CSV file.
-- Run `scrape.py` to scrape page by page and return three tables in the “data” folder in your directory.
-   ```sh
-   python scrape_urls.py
-   python scrape.py
+-Run scrape_urls.py to extract all urls into a csv file
+-Run scrape.py to scrape page by page and return three tables in the “data” folder in your directory. There are two sample url files in the “data” directory, you may change the called file name in scrape.py as you want to. 
+-Due to the limitation of the web scraping method, we suggest not scraping over 10,000 urls for one time. That is to say, we suggest scrape by part if the urls returned are over 10,000. The limited number of urls subject to change according to the nature of each website. 
+-If running into any related to being blocked, use proxy() function and add valid proxies into the list. 
+
+
 
 3. **Database**:
-The SQL queries are written in code `streamlit.py`, `analysis.py`, and `Mileage_vs_Price_Regression.py`. You may modify these queries in order to extract data.
+The SQL queries are written in code streamlit.py, analysis.py, and Mileage_vs_Price_Regression.py. You may modify these queries in order to extract desired data from the database tables. 
 
-4. **Data Manipulation**:
-Execute the python steps for data manipulation as needed.
 
-5. **Analysis and Visualization**:
-Follow the Streamlit steps for analysis and visualization.
+4. **Analysis and Visualization**:
+Use streamlit run {the-directory-to-your-streamlit.py} command to run streamlit.py. It would generate a website which contains all the visualizations of the project. Notice that if it returns an error, try to change the file name in order to avoid naming conflict.
 
 
 ## Conclusion
 
-**Automotive Data Insights** is more than a project; it's a portal to a deeper comprehension of the automotive market. The value of our work is in empowering users to make well-informed decisions, whether they are buying, selling, or simply keeping up with market trends. Through the application of regression models, price analysis, and geographic data, we strive to offer a comprehensive view of the market. This ensures users can confidently navigate the ever-changing terrain of the automotive industry. Our analysis of the relationship between various factors has revealed insightful findings...
+In conclusion, this is a gateway to a richer understanding of the automotive market. Although we have done this out of curiosity, it provides some convenience to whoever accesses this information. The significance of this information lies in its potential to guide users toward more informed decisions, whether they are navigating the complexities of buying, selling, or merely staying attuned to market dynamics. By combining regression models, price analysis, and location-specific data, our project aims to provide a holistic view, ensuring that users can confidently traverse the ever-evolving landscape of the automotive industry. Moreover, the regression model shows a strong negative relationship for all top 10 most popular makes in the US between their price on the used-vehicle market and their mileage. This piece of information may help those who are concerned about the potential loss in values of the car they own or have interests in. 
+
 
 ## References & Acknowledgements
 
