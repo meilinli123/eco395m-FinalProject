@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 from analysis import top_10_brands, top_5_expensive_brand, top_5_cheapest_brand, make_state, model_state, \
     connect_to_database, Mileage_price
-from interactive_estimation_model import regressionmap
+from interactive_estimation_model import prediction
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Set page configuration
