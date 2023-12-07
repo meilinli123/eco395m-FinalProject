@@ -13,7 +13,7 @@ Navigating the automotive landscape involves more than just choosing between mak
 
 Whether you're a buyer looking for the best deal, a seller seeking optimal pricing strategies, or an enthusiast curious about market trends, understanding the details of car information becomes a crucial asset.
 
-Our project, **Automotive Data Insights**, is designed with the goal of scraping, analyzing, and modeling essential car details from a car sales website. We delve into factors such as pricing, regression models, and location-based trends, utilizing SQL databases and StreamLit to provide valuable information. This enables users to make informed decisions in the dynamic landscape of the automotive industry.
+Our project, is designed with the goal of scraping, analyzing, and modeling essential car details from a car sales website. We delve into factors such as pricing, regression models, and location-based trends, utilizing SQL databases and StreamLit to provide valuable information. This enables users to make informed decisions in the dynamic landscape of the automotive industry.
 
 
 ## Data
