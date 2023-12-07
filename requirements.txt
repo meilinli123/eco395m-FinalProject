@@ -15,4 +15,4 @@ streamlit_extras
 scipy
 altair
 joblib
-sklearn
+scikit-learn
