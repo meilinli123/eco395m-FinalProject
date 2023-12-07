@@ -6,15 +6,16 @@
 <h3 align="center" id="heading"> Bevo’s Group: Meilin Li, Tianyu Wang, Macheddie Baker, Xiangmeng Qin, Yueting Zhang
  </h3>
 
-Introduction & Background 
+## Introduction & Background
+
 Navigating the automotive landscape involves more than just choosing between makes and models; it's about deciphering nuanced data that underlies every transaction. In a world of rapidly evolving automotive markets, having comprehensive insights into various aspects of car data is paramount. Whether you're a buyer looking for the best deal, a seller seeking optimal pricing strategies, or an enthusiast curious about market trends, understanding the details of car information becomes a crucial asset. Our project, "Automotive Data Insights," is designed with the goal of scraping, analyzing, and modeling essential car details from a car sales website, then delving into factors such as pricing, regression models, and location-based trends, with the use of SQL databases and StreamLit. Our project aims to provide valuable information that empowers users to make informed decisions in the dynamic landscape of the automotive industry.
 
-Data
+## Data
 For this study, we leverage data obtained from Cars.com (see “References” for link), a prominent online advertising and research service tailored for car buyers, sellers, and enthusiasts. The richness of our data source, Cars.com, stems from its user-friendly interface and comprehensive listings of vehicle models, makes, and geographical information.
 
 
 
-Methodology 
+## Methodology 
 
 Step 1: We scraped used cars’ data from cars.com by first extracting all the urls to each listed car, then scrape page by page. For the information in each page, we extracted them to three tables: car_basic, car_more_info, and seller, which contained makes, models, prices, mileage, and seller’s information, etc. Within all tables we inserted VIN (Vehicle Identification Number) as a column, which is unique for every single car in the US. 
 
@@ -30,7 +31,7 @@ Step 5: We used streamlit-related packages to generate a website which displays 
 
 
 
-Limitations
+## Limitations
 In the course of our project, we have encountered a series of limitations that have impacted the breadth and depth of our analysis. The scraping process we utilized was less efficient than we had hoped, and complications with our code led to unforeseen data loss. This issue not only slowed our progress but also restricted the amount of data we could analyze. Moreover, our ability to forecast prices was compromised by the lack of comprehensive vehicle information on the website, limiting the scope of our predictions.
 
 Further limitations of our analysis include:
@@ -52,7 +53,7 @@ Price vs mileage regression model for the top 10 popular branches. We want to ex
 
 
 
-Analysis Extension
+## Analysis Extension
 Environmental Impact Assessment: We could explore the environmental impact of certain car models by analyzing factors like fuel efficiency and emissions data. Provide insights into the ecological footprint of popular vehicles. 
 Competitor Analysis: The analysis can be extended to include data from competing platforms, comparing the pricing, popularity, and features of cars listed on multiple websites. 
 Seasonal Trends: We could investigate whether there are seasonal trends in car pricing or demand and provide recommendations for buyers based on optimal times to purchase.
@@ -74,9 +75,13 @@ Step 3: Data Manipulation
 python steps
 Step 4: Analysis and Visualization
 Stream Lit steps
-Conclusion
+
+
+## Conclusion
 In conclusion, "Automotive Data Insights" is not just a project; it's a gateway to a richer understanding of the automotive market. The significance of this information lies in its potential to guide users toward more informed decisions, whether they are navigating the complexities of buying, selling, or merely staying attuned to market dynamics. By combining regression models, price analysis, and location-specific data, our project aims to provide a holistic view, ensuring that users can confidently traverse the ever-evolving landscape of the automotive industry. Our investigation into the relationship between… revealed  …
-References & Acknowledgements
+
+
+## References & Acknowledgements
 Data retrieved from the following sites:
 
 https://www.cars.com/?utm_source=google&utm_medium=cpc&utm_campaign_id=8628229388&utm_trusted=TRUE&network=g&aff=acqgeosem10&KNC=acqgeosem10&gad_source=1&gclid=Cj0KCQiAgqGrBhDtARIsAM5s0_nRh1gwkesHa6iaKrfN_vAare0AW6FPa3C0jeUNQdYVjQwEeUO1RT0aAvg-EALw_wcB&gclsrc=aw.ds
