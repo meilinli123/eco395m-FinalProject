@@ -1,12 +1,11 @@
 # eco395m-FinalProject
 
-Automotive Insights: Analysis and Visualization of Used Car Market through PostSQL Database
+<h1 align="center" id="heading"> <span style="color:red"> <em> Automotive Insights: </em> <br> Analysis and Visualization of Used Car Market through PostSQL Database </span> </h1>
+<h3 align="center" id="heading"> Dec. 7, 2023 <br> 
+<em> Python, Big Data, and Databases (ECO395m)  </em> <br> <h3>
+<h3 align="center" id="heading"> Bevo’s Group: Meilin Li, Tianyu Wang, Macheddie Baker, Xiangmeng Qin, Yueting Zhang
+ </h3>
 
-Final Project Report | Python, Data, & Databases  Eco. 395M | Dr. Krueger | Dec. 7, 2023
-_________________________________________________________________________
-
-Bevo’s Group Members
-Meilin Li, Tianyu Wang, Macheddie Baker, Nancy Chin, Yueting Zhang
 Introduction & Background 
 Navigating the automotive landscape involves more than just choosing between makes and models; it's about deciphering nuanced data that underlies every transaction. In a world of rapidly evolving automotive markets, having comprehensive insights into various aspects of car data is paramount. Whether you're a buyer looking for the best deal, a seller seeking optimal pricing strategies, or an enthusiast curious about market trends, understanding the details of car information becomes a crucial asset. Our project, "Automotive Data Insights," is designed with the goal of scraping, analyzing, and modeling essential car details from a car sales website, then delving into factors such as pricing, regression models, and location-based trends, with the use of SQL databases and StreamLit. Our project aims to provide valuable information that empowers users to make informed decisions in the dynamic landscape of the automotive industry.
 
