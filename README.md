@@ -93,16 +93,16 @@ Our analysis could be enriched further by considering the following aspects:
 
 ## Reproducibility
 
-**Programs Used**:
+### Programs Used:
 - Python IDEs: PyCharm, Visual Studio Code
 - SQL Database: PostgreSQL
 - Data Visualization and Interaction: Streamlit
 
-
 ### Steps to Rerun the Analysis:
 
-1. **Install the Packages**:
-   Install the packages listed in `requirements.txt`.
+1. **Install the Packages**: Install the packages listed in `requirements.txt`.
+   ```sh
+   pip install -r requirements.txt
 
 2. **Data Acquisition**:
 - Run `scrape_urls.py` to extract all URLs into a CSV file.
