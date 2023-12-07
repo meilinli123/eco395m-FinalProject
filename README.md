@@ -51,41 +51,52 @@ We developed a web interface using `streamlit` where users can:
 - Access a dashboard displaying regression analysis of price vs. mileage for the top 10 makes.
 
 
-
-
-
-
 ## Limitations
-In the course of our project, we have encountered a series of limitations that have impacted the breadth and depth of our analysis. The scraping process we utilized was less efficient than we had hoped, and complications with our code led to unforeseen data loss. This issue not only slowed our progress but also restricted the amount of data we could analyze. Moreover, our ability to forecast prices was compromised by the lack of comprehensive vehicle information on the website, limiting the scope of our predictions.
 
-Further limitations of our analysis include:
+In the course of our project, we have encountered a series of limitations that have impacted the breadth and depth of our analysis:
 
-Representativeness: The data available on Cars.com may not be fully representative of the entire automotive market. The platform's user demographics and the types of vehicles listed might skew your findings towards certain segments.
-Temporal Factors: As the automotive market is dynamic, the data you scrape might quickly become outdated. Changes in prices, models, or other features might occur after your data collection, potentially 
-Findings & Results
-In this section, we present the comprehensive findings and results derived from the thorough analysis of the scraped car data from Cars.com.
-We use streamlit to generate a Web with the following functions:
-Some Rankings include 
-	Top 5 most popular branches
-	Top 5 most expensive branches
-Top 5 cheapest branches
-to help customer to have a general understanding of the market, making it less
-Price vs mileage regression model for the top 10 popular branches. We want to explore how the mileage of a vehicle impacts its price, which make(brand) has higher discount rate 
+- **Efficiency and Data Loss**: The scraping process was less efficient than anticipated, and complications with our code led to unforeseen data loss. This not only slowed our progress but also restricted the amount of data available for analysis.
+  
+- **Incomplete Vehicle Information**: The lack of comprehensive vehicle information on the website compromised our ability to forecast prices accurately, limiting the scope of our predictions.
+
+- **Representativeness**: Data from Cars.com may not fully reflect the entire automotive market due to the platform's user demographics and the types of vehicles listed.
+
+- **Temporal Factors**: The dynamic nature of the automotive market means that the data might quickly become outdated after collection.
 
 
+## Findings & Results
 
+Our comprehensive findings and results are derived from an in-depth analysis of the scraped car data from Cars.com:
 
+- **Interactive Web Interface**: We utilize Streamlit to generate a web application that provides:
+
+  - **Rankings**:
+    - Top 5 most popular brands
+    - Top 5 most expensive brands
+    - Top 5 cheapest brands
+
+  These rankings help customers gain a general understanding of the market.
+
+- **Price vs. Mileage Regression**: We developed a regression model for the top 10 popular brands to explore how mileage impacts vehicle price and which brands offer a higher discount rate.
 
 
 ## Analysis Extension
-Environmental Impact Assessment: We could explore the environmental impact of certain car models by analyzing factors like fuel efficiency and emissions data. Provide insights into the ecological footprint of popular vehicles. 
-Competitor Analysis: The analysis can be extended to include data from competing platforms, comparing the pricing, popularity, and features of cars listed on multiple websites. 
-Seasonal Trends: We could investigate whether there are seasonal trends in car pricing or demand and provide recommendations for buyers based on optimal times to purchase.
-Repoducability
-Programs Used:
-Python IDLE (Pycharm, Visual Studios)
-SQL Database (Postgres)
-StreamLit
+
+Our analysis could be enriched further by considering the following aspects:
+
+- **Environmental Impact Assessment**: Analyzing factors like fuel efficiency and emissions data to provide insights into the ecological footprint of popular vehicles.
+  
+- **Competitor Analysis**: Extending the analysis to include data from competing platforms to compare pricing, popularity, and features.
+
+- **Seasonal Trends**: Investigating potential seasonal trends in car pricing or demand, and offering recommendations for optimal buying times.
+
+
+## Reproducibility
+
+**Programs Used**:
+- Python IDEs: PyCharm, Visual Studio Code
+- SQL Database: PostgreSQL
+- Data Visualization and Interaction: Streamlit
 
 
 ## Steps to Rerun the Analysis
