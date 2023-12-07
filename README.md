@@ -18,7 +18,7 @@ Our project, **Automotive Data Insights**, is designed with the goal of scraping
 
 ## Data
 
-For this study, we leverage data obtained from [Cars.com](#references), a prominent online advertising and research service tailored for car buyers, sellers, and enthusiasts. The richness of our data source comes from its user-friendly interface and comprehensive listings of vehicle models, makes, and geographical information.
+For this study, we leverage data obtained from [Cars.com](https://www.cars.com), a prominent online advertising and research service tailored for car buyers, sellers, and enthusiasts. The richness of our data source comes from its user-friendly interface and comprehensive listings of vehicle models, makes, and geographical information.
 
 
 ## Methodology
@@ -119,18 +119,18 @@ Follow the Streamlit steps for analysis and visualization.
 
 
 ## Conclusion
-In conclusion, "Automotive Data Insights" is not just a project; it's a gateway to a richer understanding of the automotive market. The significance of this information lies in its potential to guide users toward more informed decisions, whether they are navigating the complexities of buying, selling, or merely staying attuned to market dynamics. By combining regression models, price analysis, and location-specific data, our project aims to provide a holistic view, ensuring that users can confidently traverse the ever-evolving landscape of the automotive industry. Our investigation into the relationship between… revealed  …
 
+**Automotive Data Insights** is more than a project; it's a portal to a deeper comprehension of the automotive market. The value of our work is in empowering users to make well-informed decisions, whether they are buying, selling, or simply keeping up with market trends. Through the application of regression models, price analysis, and geographic data, we strive to offer a comprehensive view of the market. This ensures users can confidently navigate the ever-changing terrain of the automotive industry. Our analysis of the relationship between various factors has revealed insightful findings...
 
 ## References & Acknowledgements
-Data retrieved from the following sites:
 
-https://www.cars.com/?utm_source=google&utm_medium=cpc&utm_campaign_id=8628229388&utm_trusted=TRUE&network=g&aff=acqgeosem10&KNC=acqgeosem10&gad_source=1&gclid=Cj0KCQiAgqGrBhDtARIsAM5s0_nRh1gwkesHa6iaKrfN_vAare0AW6FPa3C0jeUNQdYVjQwEeUO1RT0aAvg-EALw_wcB&gclsrc=aw.ds
+**Data Sources:**
+- [Cars.com](https://www.cars.com/?utm_source=google&utm_medium=cpc&utm_campaign_id=8628229388&utm_trusted=TRUE&network=g&aff=acqgeosem10&KNC=acqgeosem10&gad_source=1&gclid=Cj0KCQiAgqGrBhDtARIsAM5s0_nRh1gwkesHa6iaKrfN_vAare0AW6FPa3C0jeUNQdYVjQwEeUO1RT0aAvg-EALw_wcB&gclsrc=aw.ds) - Utilized for data acquisition and analysis.
 
-Reference Material:
+**Reference Material:**
+- Krueger, Edward. Menon, Shree. “API Calls & Data Scraping.” “SQL & Databases.” ECO395, University of Texas, Austin. October 2023.
+- [Streamlit.io](https://streamlit.io/) - Used for creating interactive web applications.
+- [Real Python - Linear Regression in Python](https://realpython.com/linear-regression-in-python/) - Provided guidance on regression analysis techniques.
 
-Krueger, Edward. Menon, Shree. “API Calls & Data Scraping.”, “SQL & Databases.”, ECO395, University of Texas, Austin, Austin, October, 2023.
-https://streamlit.io/
-https://realpython.com/linear-regression-in-python/
 
 
