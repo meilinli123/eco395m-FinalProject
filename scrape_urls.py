@@ -38,16 +38,14 @@ if __name__== "__main__":
 
     # makes = ["AC", "Acura", "Alfa Romeo", "Am General", "American Motors", "Aston Martin", "Audi", "Austin-Healey", "Avanti Motors", "Bentley", "BMW", "Bugatti", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Daewoo", "Datsun", "Delorean", "Desoto", "DeTomaso", "Dodge", "Eagle", "Edsel", "Ferrari", "FIAT", "Fisker", "Ford", "Genesis", "Geo", "GMC", "Honda", "Hudson", "Hummer", "Hyundai", "INEOS", "INFINITI", "International", "Isuzu", "Jaguar", "Jeep", "Jensen", "Kaiser", "Karma", "Kia", "Koenigsegg", "Lamborghini", "Land Rover", "LaSalle", "Lexus", "Lincoln", "Lotus", "Lucid", "Maserati", "Maybach", "Mazda", "McLaren", "Mercedes-Benz", "Mercury", "MG", "MINI", "Mitsubishi", "Morgan", "Nash", "Nissan", "Oldsmobile", "Opel", "Packard", "Pagani", "Panoz", "Plymouth", "Polestar", "Pontiac", "Porsche", "RAM", "Renault", "Rivian", "Rolls-Royce", "Rover", "Saab", "Saturn", "Scion", "smart", "Spyker", "Studebaker", "Subaru", "Sunbeam", "Suzuki", "Tesla", "Toyota", "Triumph", "Volkswagen", "Volvo", "Willys"]
     
-    makes = ["AC"]
+    makes = ["austin_healey", "avanti_motors"]
     car_base_url = "https://www.cars.com/vehicledetail/"
     car_urls = scrape_ids(makes, car_base_url)
 
     os.makedirs('data', exist_ok=True)
 
     PATH = os.path.join('data', "results.csv")
-    # with open(PATH, "w") as file:
-    #     for url in car_urls:
-    #         file.write(url + "\n")
+    
     with open(PATH, "a", newline="") as csvfile:
         csv_writer = csv.writer(csvfile)
         for url in car_urls:
