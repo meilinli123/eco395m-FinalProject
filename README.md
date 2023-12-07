@@ -119,7 +119,7 @@ Use streamlit run {the-directory-to-your-streamlit.py} command to run streamlit.
 
 ### Plots:
 
-![Plot1.png]
+![Plot1][Plot1.png]
 ![Plot2.png]
 ![Plot3.png]
 
