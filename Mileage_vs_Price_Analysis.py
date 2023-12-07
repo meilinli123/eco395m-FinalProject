@@ -1,66 +1,69 @@
 import streamlit as st
 import pandas as pd
-import sqlite3
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
+import psycopg2
+import numpy as np
+import matplotlib.pyplot as plt
+from statsmodels.robust.robust_linear_model import RLM
+from postgre import database_info
 
-# Create a connection to SQLite database
-conn = sqlite3.connect('finalproject.db') 
+def write_table(results):
+    df_results = pd.DataFrame(results)
 
-# Define a list of selected brands
-selected_brands = ["Audi", "Toyota", "Volkswagen", "Jeep", "Honda",
-                    "Mazda", "RAM", "Buick", "Lexus", "GMC"]
+    df_results = df_results.sort_values(by='Coefficient', ascending=False).reset_index(drop=True)
 
-# Create an empty DataFrame to store results
-results_df = pd.DataFrame(columns=["Make", "Mileage Coefficient", "Intercept", "R-squared"])
+    df_results.index = df_results.index + 1
 
-# Loop through selected brands and perform OLS regression
-for selected_brand in selected_brands:
-    # Define a SQL query to retrieve data for the selected brand
-    query = f'''
-        SELECT Mileage, Price
-        FROM car_basic
-        WHERE Make = '{selected_brand}'
-    '''
+    st.header("Regression Coefficients by Makes")
+    st.table(df_results)
 
-    # Execute the SQL query and read the results into a Pandas DataFrame
-    df = pd.read_sql_query(query, conn)
+def regress(make):
+    
+    df = query()
+    
+    X = sm.add_constant(df['mileage'])
+    y = df['price']
+    model = RLM(y, X).fit()
+    message = f"Coefficient = {model.params['mileage']:.4f}"
+    
+    st.header(f"Regression Analysis for {make}")
+    
+    st.write(message)
 
-    # Perform OLS regression
-    X = sm.add_constant(df['Mileage'])
-    y = df['Price']
-    model = sm.OLS(y, X).fit()
+    plt.figure()
+    plt.scatter(df['mileage'], y, alpha=0.5)
+    plt.title(f"{make} - Price vs. Mileage Regression")
+    plt.xlabel("Mileage")
+    plt.ylabel("Price")
+    plt.plot(df['mileage'], model.predict(X), color='red', linewidth=2)
+    st.pyplot(plt)
 
-    # Store results in the DataFrame
-    results_df = results_df.append({"Make": selected_brand,
-                                    "Mileage Coefficient": model.params['Mileage'],
-                                    "Intercept": model.params['const'],
-                                    "R-squared": model.rsquared}, ignore_index=True)
+    return {
+        "Make": make,
+        "Coefficient": model.params['mileage']
+    }
 
-# Close the database connection
-conn.close()
+def query():
+    conn = psycopg2.connect(**db_info)
+    query = f"SELECT price, mileage FROM car_basic WHERE make = '{make}' AND new_used = '1'"
+    df = pd.read_sql(query, conn)
+    df = df.dropna()
+    if len(df) < 3:
+        st.warning(f"Insufficient data points for {make} to perform regression analysis. Skipping.")
+        return
+    return df
 
-# Streamlit app
-st.title("Mileage vs. Price Analysis by Brand")
+if __name__ == "__main__":
+    db_info = database_info 
 
-# Display OLS regression results
-st.write("OLS Regression Results:")
-st.dataframe(results_df)
+    makes = ["Audi", "Toyota", "Volkswagen", "Jeep", "Honda", "Mazda", "RAM", "Buick", "Lexus", "GMC"]
+    
+    st.title("Car Price Regression Analysis")
 
-# Plot OLS regression lines
-st.write("OLS Regression Lines:")
-for index, row in results_df.iterrows():
-    selected_brand = row["Make"]
-    mileage_coefficient = row["Mileage Coefficient"]
-    intercept = row["Intercept"]
+    results = []
+    for make in makes:
+        result = regress(make)
+        results.append(result)
 
-    df_brand = df[df['Make'] == selected_brand]
-
-    # Plot mileage vs. price scatter plot
-    st.subheader(f"Brand: {selected_brand}")
-    st.write("Scatter plot of Mileage vs. Price:")
-    st.scatter_chart(df_brand[['Mileage', 'Price']])
-
-    # Plot OLS regression line
-    st.write(f"OLS Regression Line for {selected_brand}:")
-    st.line_chart(df_brand[['Mileage', 'Price']])
+    write_table(results)
