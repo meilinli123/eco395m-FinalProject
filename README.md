@@ -6,13 +6,19 @@
 <h3 align="center" id="heading"> Bevo’s Group: Meilin Li, Tianyu Wang, Macheddie Baker, Xiangmeng Qin, Yueting Zhang
  </h3>
 
+
 ## Introduction & Background
 
-Navigating the automotive landscape involves more than just choosing between makes and models; it's about deciphering nuanced data that underlies every transaction. In a world of rapidly evolving automotive markets, having comprehensive insights into various aspects of car data is paramount. Whether you're a buyer looking for the best deal, a seller seeking optimal pricing strategies, or an enthusiast curious about market trends, understanding the details of car information becomes a crucial asset. Our project, "Automotive Data Insights," is designed with the goal of scraping, analyzing, and modeling essential car details from a car sales website, then delving into factors such as pricing, regression models, and location-based trends, with the use of SQL databases and StreamLit. Our project aims to provide valuable information that empowers users to make informed decisions in the dynamic landscape of the automotive industry.
+Navigating the automotive landscape involves more than just choosing between makes and models; it's about deciphering nuanced data that underlies every transaction. In a world of rapidly evolving automotive markets, having comprehensive insights into various aspects of car data is paramount.
+
+Whether you're a buyer looking for the best deal, a seller seeking optimal pricing strategies, or an enthusiast curious about market trends, understanding the details of car information becomes a crucial asset.
+
+Our project, **Automotive Data Insights**, is designed with the goal of scraping, analyzing, and modeling essential car details from a car sales website. We delve into factors such as pricing, regression models, and location-based trends, utilizing SQL databases and StreamLit to provide valuable information. This enables users to make informed decisions in the dynamic landscape of the automotive industry.
+
 
 ## Data
-For this study, we leverage data obtained from Cars.com (see “References” for link), a prominent online advertising and research service tailored for car buyers, sellers, and enthusiasts. The richness of our data source, Cars.com, stems from its user-friendly interface and comprehensive listings of vehicle models, makes, and geographical information.
 
+For this study, we leverage data obtained from [Cars.com](#references), a prominent online advertising and research service tailored for car buyers, sellers, and enthusiasts. The richness of our data source comes from its user-friendly interface and comprehensive listings of vehicle models, makes, and geographical information.
 
 
 ## Methodology
