@@ -63,18 +63,24 @@ Python IDLE (Pycharm, Visual Studios)
 SQL Database (Postgres)
 StreamLit
 
-Steps to rerun the analysis:
 
-Step 0: Install the packages listed in requirements.txt
-Step 1: Data Acquisition 
-Run scrape_urls.py to extract all urls into a csv file
-Run scrape.py to scrape page by page and return three tables in “data” folder in your directory. 
-Step 2: DataBase
-The SQL queries are written in code streamlit.py, analysis.py, and Mileage_vs_Price_Regression.py. You may modify these queries in order to extract de
-Step 3: Data Manipulation 
-python steps
-Step 4: Analysis and Visualization
-Stream Lit steps
+## Steps to Rerun the Analysis
+
+1. **Install the Packages**:
+   Install the packages listed in `requirements.txt`.
+
+2. **Data Acquisition**:
+- Run `scrape_urls.py` to extract all URLs into a CSV file.
+- Run `scrape.py` to scrape page by page and return three tables in the “data” folder in your directory.
+
+3. **Database**:
+The SQL queries are written in code `streamlit.py`, `analysis.py`, and `Mileage_vs_Price_Regression.py`. You may modify these queries in order to extract data.
+
+4. **Data Manipulation**:
+Execute the python steps for data manipulation as needed.
+
+5. **Analysis and Visualization**:
+Follow the Streamlit steps for analysis and visualization.
 
 
 ## Conclusion
