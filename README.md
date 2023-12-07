@@ -103,19 +103,19 @@ Our analysis could be enriched further by considering the following aspects:
    pip install -r requirements.txt
 
 2. **Data Acquisition**:
--Run scrape_urls.py to extract all urls into a csv file
--Run scrape.py to scrape page by page and return three tables in the “data” folder in your directory. There are two sample url files in the “data” directory, you may change the called file name in scrape.py as you want to. 
+-Run `scrape_urls.py` to extract all urls into a csv file
+-Run `scrape.py` to scrape page by page and return three tables in the “data” folder in your directory. There are two sample url files in the “data” directory, you may change the called file name in `scrape.py` as you want to. 
 -Due to the limitation of the web scraping method, we suggest not scraping over 10,000 urls for one time. That is to say, we suggest scrape by part if the urls returned are over 10,000. The limited number of urls subject to change according to the nature of each website. To shorten the scraping time, we randomly selected 50,000 urls out of 250,000.
 -If running into any related to being blocked, use proxy() function and add valid proxies into the list. 
 
 
 
 4. **Database**:
-The SQL queries are written in code streamlit.py, analysis.py, and Mileage_vs_Price_Regression.py. You may modify these queries in order to extract desired data from the database tables. 
+The SQL queries are written in code `streamlit.py`, `analysis.py`, and `Mileage_vs_Price_Regression.py`. You may modify these queries in order to extract desired data from the database tables. 
 
 
 5. **Analysis and Visualization**:
-Use streamlit run {the-directory-to-your-streamlit.py} command to run streamlit.py. It would generate a website which contains all the visualizations of the project. Notice that if it returns an error, try to change the file name in order to avoid naming conflict.
+Use streamlit run `streamlit.py` command to run `streamlit.py`. It would generate a website which contains all the visualizations of the project. Notice that if it returns an error, try to change the file name in order to avoid naming conflict.
 
 
 ## Conclusion
