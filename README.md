@@ -15,17 +15,35 @@ For this study, we leverage data obtained from Cars.com (see “References” fo
 
 
 
-## Methodology 
+## Methodology
 
-Step 1: We scraped used cars’ data from cars.com by first extracting all the urls to each listed car, then scrape page by page. For the information in each page, we extracted them to three tables: car_basic, car_more_info, and seller, which contained makes, models, prices, mileage, and seller’s information, etc. Within all tables we inserted VIN (Vehicle Identification Number) as a column, which is unique for every single car in the US. 
+### Step 1: Data Scraping
+We performed data scraping from cars.com by:
+- Extracting URLs to each listed car.
+- Scraping information page by page.
+- Organizing the data into three tables: `car_basic`, `car_more_info`, and `seller`, which include details such as makes, models, prices, mileage, and seller's information.
+- Including the VIN (Vehicle Identification Number) for each car, ensuring a unique identifier for each entry.
 
-Step 2: After getting the three tables, we loaded them into a PostgreSQL database through GCP database.
+### Step 2: Data Storage
+The extracted tables were loaded into a PostgreSQL database hosted on GCP (Google Cloud Platform).
 
-Step 3: We choose to use a decision tree model to estimate the price. We use the sklearn library in python to feature 'make', 'model', 'produce_year', 'mileage' and zip_code, thus when customers enter their cars data, a price prediction model is generated based on our database, and then will give the estimated price for their specific car.
+### Step 3: Price Prediction Model
+For price estimation, we:
+- Chose a decision tree model from the `sklearn` library.
+- Used features such as 'make', 'model', 'produce_year', 'mileage', and 'zip_code'.
+- Created a model that generates price predictions based on user input compared to our database.
 
-Step 4: After making counts of all makes and returns the most popular 10 makes on the country, we generated regression analysis by extracting price and mileage data from these 10 makes. Since this is real life data from a website, we endured robustness by using “RLM” instead of “OLS”. 
+### Step 4: Regression Analysis
+To analyze the data further:
+- We counted all makes and identified the top 10 most popular in the country.
+- Conducted regression analysis using "RLM" (Robust Linear Models) to ensure robustness against real-life data variations.
 
-Step 5: We used streamlit-related packages to generate a website which displays all our data-analysis visualizations. The website contains a menu bar which switches among three main functions: interactive search bar which is connected to the price prediction model; display of the most popular makes of the nation; and a dashboard shows regression analysis results of price vs. mileage for top 10 most popular makes. 
+### Step 5: Data Visualization and Interaction
+We developed a web interface using `streamlit` where users can:
+- Utilize an interactive search bar linked to the price prediction model.
+- View the most popular makes nationwide.
+- Access a dashboard displaying regression analysis of price vs. mileage for the top 10 makes.
+
 
 
 
