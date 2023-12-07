@@ -117,6 +117,11 @@ The SQL queries are written in code streamlit.py, analysis.py, and Mileage_vs_Pr
 5. **Analysis and Visualization**:
 Use streamlit run {the-directory-to-your-streamlit.py} command to run streamlit.py. It would generate a website which contains all the visualizations of the project. Notice that if it returns an error, try to change the file name in order to avoid naming conflict.
 
+### Plots:
+
+![Plot1.png]
+![Plot2.png]
+![Plot3.png]
 
 ## Conclusion
 
