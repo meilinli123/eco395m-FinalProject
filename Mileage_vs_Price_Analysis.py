@@ -18,9 +18,9 @@ def write_table(results):
     st.header("Regression Coefficients by Makes")
     st.table(df_results)
 
-def regress(make):
+def regress(make, db_info):
     
-    df = query()
+    df = query(make, db_info)
     
     X = sm.add_constant(df['mileage'])
     y = df['price']
@@ -44,7 +44,7 @@ def regress(make):
         "Coefficient": model.params['mileage']
     }
 
-def query():
+def query(make, db_info):
     conn = psycopg2.connect(**db_info)
     query = f"SELECT price, mileage FROM car_basic WHERE make = '{make}' AND new_used = '1'"
     df = pd.read_sql(query, conn)
@@ -54,16 +54,15 @@ def query():
         return
     return df
 
-if __name__ == "__main__":
-    db_info = database_info 
-
+def main():
+    db_info = {'host': '34.173.71.254','database': 'finalproject', 'user': 'postgres','password': 'luolex','port': 5432,}
     makes = ["Audi", "Toyota", "Volkswagen", "Jeep", "Honda", "Mazda", "RAM", "Buick", "Lexus", "GMC"]
     
     st.title("Car Price Regression Analysis")
 
     results = []
     for make in makes:
-        result = regress(make)
+        result = regress(make, db_info)
         results.append(result)
 
     write_table(results)
