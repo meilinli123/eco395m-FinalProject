@@ -99,7 +99,7 @@ Our analysis could be enriched further by considering the following aspects:
 - Data Visualization and Interaction: Streamlit
 
 
-## Steps to Rerun the Analysis
+### Steps to Rerun the Analysis:
 
 1. **Install the Packages**:
    Install the packages listed in `requirements.txt`.
