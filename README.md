@@ -107,6 +107,9 @@ Our analysis could be enriched further by considering the following aspects:
 2. **Data Acquisition**:
 - Run `scrape_urls.py` to extract all URLs into a CSV file.
 - Run `scrape.py` to scrape page by page and return three tables in the “data” folder in your directory.
+   ```sh
+   python scrape_urls.py
+   python scrape.py
 
 3. **Database**:
 The SQL queries are written in code `streamlit.py`, `analysis.py`, and `Mileage_vs_Price_Regression.py`. You may modify these queries in order to extract data.
