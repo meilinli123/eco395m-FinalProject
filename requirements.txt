@@ -14,4 +14,4 @@ sqlite3
 streamlit_extras
 scipy
 altair
-
+joblib
